@@ -43,7 +43,7 @@
 						<li><a href="#">My Account(<c:out value="${username }"></c:out>)</a></li>
 					</c:when>
 				</c:choose>
-				<li><a href="Controller?page=showcart">cart(<c:out value="${x}"/>)</a></li>
+  				<li><a href="Controller?page=showcart">cart(<c:out value="${x}"/>)</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -53,7 +53,7 @@
 	<c:choose>
 		<c:when test="${session == null}">
 				<%
-				JOptionPane.showMessageDialog(null, "Please Login first", "Info", JOptionPane.INFORMATION_MESSAGE);
+				
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 				%>
 		</c:when>
@@ -61,7 +61,7 @@
 		<c:when test="${x == 0}">
 				
 				<%
-				JOptionPane.showMessageDialog(null, "Your shopping bag is empty", "Info", JOptionPane.INFORMATION_MESSAGE);
+				
 				request.getRequestDispatcher("cart.jsp").forward(request, response);
 				%>
 		</c:when>

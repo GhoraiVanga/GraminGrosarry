@@ -42,7 +42,7 @@
 						<li><a href="#">My Account(<c:out value="${username }"></c:out>)</a></li>
 					</c:when>
 				</c:choose>
-				<li><a href="Controller?page=showcart">cart(<c:out value="${x}"/>)</a></li>
+				<li><a href="Controller?page=showcart"><span><button type="button" class="btn btn-primary">cart <span class="badge badge-danger"><c:out value="${x}"/></span><span class="sr-only">unread messages</span></button></span></a></li>
 			</ul>
 		</nav>
 	</header>
