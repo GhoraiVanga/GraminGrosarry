@@ -49,7 +49,7 @@ public class DB {
 
 	public void addUser(User user) throws SQLException {
 		dbConnect();
-		String sql = "Insert into user(name,email,username,address,password) values(?,?,?,?,?)";
+		String sql = "Insert into cust(name,email,username,address,password) values(?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1, user.getName());
@@ -66,7 +66,7 @@ public class DB {
 	public boolean checkUser(String username, String password) throws SQLException {
 		dbConnect();
 		int count = 0;
-		String sql = "Select * from user where username = ? and password = ?";
+		String sql = "Select * from cust where username = ? and password = ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1, username);
@@ -117,7 +117,7 @@ public class DB {
 
 	public ArrayList<User> fetchUser() throws SQLException {
 		dbConnect();
-		String sql = "Select * from user";
+		String sql = "Select * from cust";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		

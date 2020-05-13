@@ -66,7 +66,7 @@
 	 		<button type="submit" name="login" class="signup-btn">Log in</button>
 	 	</div>
 	 	<p>
-	 		New to Gramin Grosarry? <a href="Controller?page=sign-up" style="color:#F24638;">Create Account</a>
+	 		New to Gramin Grosarry? <a href="Controller?page=signup" style="color:#F24638;">Create Account</a>
 	 	</p>
 	 </form>
 

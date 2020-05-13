@@ -1,6 +1,7 @@
 package com.javamaster.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public class Controller extends HttpServlet {
 	static ArrayList<String> cartlist = new ArrayList<>();
 	ArrayList<User> userList = new ArrayList<>();
 	HttpSession session;
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = request.getParameter("page");
@@ -31,6 +33,7 @@ public class Controller extends HttpServlet {
 			 try {
 				list = db.fetch();
 				System.out.println("2nd");
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				System.out.println("3nd");
@@ -54,6 +57,7 @@ public class Controller extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = request.getParameter("page");
+		
 		if(page.equals("login")) {
 			request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
 		}
@@ -130,7 +134,7 @@ public class Controller extends HttpServlet {
 				session.setAttribute("email", user.fetchemail(userList,username));
 				session.setAttribute("name", user.fetchname(userList,username));
 				session.setAttribute("username", username);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(request, response);
 			}else {
 				request.setAttribute("msg", "Invalid Crediantials");
 				request.setAttribute("username", username);
@@ -187,10 +191,16 @@ public class Controller extends HttpServlet {
 			boolean check = p.check(cartlist,id);
 			
 			if(check==true)
-				JOptionPane.showMessageDialog(null, "Product is already added to Cart", "Info", JOptionPane.INFORMATION_MESSAGE);
+			{	
+			//JOptionPane.showMessageDialog(null, "Product is already added to Cart", "Info", JOptionPane.INFORMATION_MESSAGE);
+			//servlet code
+				cartlist.add(id);
+				request.setAttribute("loginError","Incorrect password");
+			}
 			else {
 			cartlist.add(id);
-			JOptionPane.showMessageDialog(null, "Product successfully added to Cart", "Info", JOptionPane.INFORMATION_MESSAGE);
+			request.setAttribute("loginError","Incorrect password");
+		//	JOptionPane.showMessageDialog(null, "Product successfully added to Cart", "Info", JOptionPane.INFORMATION_MESSAGE);
 			}
 			
 			if(action.equals("index"))
