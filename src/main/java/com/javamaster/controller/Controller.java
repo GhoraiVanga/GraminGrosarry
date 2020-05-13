@@ -221,9 +221,9 @@ public class Controller extends HttpServlet {
 			
 			request.getRequestDispatcher("/WEB-INF/view/success.jsp").forward(request, response);
 			
-			/*session = request.getSession();
+			session = request.getSession();
 			 cartlist.clear();
-			 session.setAttribute("cartlist", cartlist);*/
+			 session.setAttribute("cartlist", cartlist);
 		}
 		
 		if(page.equals("remove")) {
